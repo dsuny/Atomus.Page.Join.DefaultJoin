@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Atomus.Ads.Controls;assembly=Atomus.Core"
+             xmlns:local="clr-namespace:Atomus.Page.Join.ViewModel"
+             x:Class="Atomus.Page.Join.DefaultJoin"
+             >
+    
+    <!--<ContentPage.BindingContext>
+        <local:DefaultLoginViewModel />
+    </ContentPage.BindingContext>-->
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding ActivityIndicator}" Color="CornflowerBlue" VerticalOptions="Center" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
+                <ScrollView>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="100" />
+
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Switch Grid.Column="1" Grid.Row="1"
+                            IsToggled="{Binding UserAgreementIsToggled}" IsEnabled="{Binding IsEnabledControl}"
+                            HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  />
+                        <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"
+                           Text="이용약관 동의"
+                           HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                        <ScrollView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4">
+                            <Label FontSize="Micro"
+                                   BackgroundColor="{Binding UserAgreementBackgroundColor}"
+                                   Text="{Binding UserAgreement}" IsEnabled="{Binding IsEnabledControl}"
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                        </ScrollView>
+
+                        <Switch Grid.Column="1" Grid.Row="3"
+                            IsToggled="{Binding PersonalInformationCollectionAgreementToggled}" IsEnabled="{Binding IsEnabledControl}"
+                            HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  />
+                        <Label Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3"
+                           Text="개인정보 수집 및 이용 동의"
+                           HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                        <ScrollView Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4">
+                            <Label FontSize="Micro"
+                                   BackgroundColor="{Binding PersonalInformationCollectionAgreementBackgroundColor}"
+                                   Text="{Binding PersonalInformationCollectionAgreement}" IsEnabled="{Binding IsEnabledControl}"
+                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                        </ScrollView>
+
+                        <CheckBox Grid.Column="1" Grid.Row="6"
+                                  IsChecked="{Binding NewChecked}" IsEnabled="{Binding IsEnabledControl}"
+                                  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                        <Label Grid.Column="2" Grid.Row="6"
+                           Text="신규"
+                           HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+                        <CheckBox Grid.Column="3" Grid.Row="6"
+                                  IsChecked="{Binding PasswordChangeChecked}" IsEnabled="{Binding IsEnabledControl}"
+                                  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                        <Label Grid.Column="4" Grid.Row="6"
+                           Text="비밀번호 변경"
+                           HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+                        <Entry Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2"
+                                       Text="{Binding Email}" IsEnabled="{Binding IsEnabledControl}"
+                                       HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                                       Placeholder="Email" Keyboard="Email" ClearButtonVisibility="WhileEditing" />
+
+                        <Entry Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="2"
+                                       Text="{Binding ReEmail}" IsEnabled="{Binding IsEnabledControl}"
+                                       HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                                       Placeholder="{Binding ReEmailPlaceholder}" IsPassword="{Binding ReEmailIsPassword}" Keyboard="{Binding ReEmailKeyboard}" ClearButtonVisibility="WhileEditing"/>
+
+                        <Entry Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2"
+                                       Text="{Binding AccessNumber}" IsEnabled="{Binding IsEnabledControl}"
+                                       HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                                       Placeholder="Password" IsPassword="True" ClearButtonVisibility="WhileEditing"/>
+
+                        <Entry Grid.Column="3" Grid.Row="8" Grid.ColumnSpan="2"
+                                       Text="{Binding ReAccessNumber}" IsEnabled="{Binding IsEnabledControl}"
+                                       HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                                       Placeholder="Re Password" IsPassword="True" ClearButtonVisibility="WhileEditing"/>
+
+                        <Entry Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="4"
+                                       Text="{Binding Nickname}" IsEnabled="{Binding IsEnabledControl}"
+                                       HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                                       Placeholder="NickName" ClearButtonVisibility="WhileEditing"/>
+                    </Grid>
+                </ScrollView>
+
+                <Grid BackgroundColor="Transparent" ColumnSpacing="4" RowSpacing="1" VerticalOptions="StartAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="1" Grid.Row="0"
+                            Text="Join"
+                            Command="{Binding JoinCommand}" IsEnabled="{Binding IsEnabledControl}" />
+                    <Button Grid.Column="2" Grid.Row="0"
+                            Text="Back"
+                            Command="{Binding BackCommand}" IsEnabled="{Binding IsEnabledControl}" />
+
+                </Grid>
+                
+                <controls:AdsBannerControl AdUnitId="ca-app-pub-1533168241290971/3724025077"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
